@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ERecord.Models;
 using ERecord.ViewModel;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ERecord.Controllers
 {

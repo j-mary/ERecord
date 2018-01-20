@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201801202321345_MadeApplicationUserDatePropertyNull.Designer.cs">
       <DependentUpon>201801202321345_MadeApplicationUserDatePropertyNull.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801202347219_SeedAdminRole.cs" />
+    <Compile Include="Migrations\201801202347219_SeedAdminRole.Designer.cs">
+      <DependentUpon>201801202347219_SeedAdminRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\EnumManager.cs" />
@@ -301,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801202321345_MadeApplicationUserDatePropertyNull.resx">
       <DependentUpon>201801202321345_MadeApplicationUserDatePropertyNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801202347219_SeedAdminRole.resx">
+      <DependentUpon>201801202347219_SeedAdminRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
