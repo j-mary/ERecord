@@ -209,6 +209,10 @@
     <Compile Include="Migrations\201801202215447_AddApplicationUserProperties.Designer.cs">
       <DependentUpon>201801202215447_AddApplicationUserProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801202321345_MadeApplicationUserDatePropertyNull.cs" />
+    <Compile Include="Migrations\201801202321345_MadeApplicationUserDatePropertyNull.Designer.cs">
+      <DependentUpon>201801202321345_MadeApplicationUserDatePropertyNull.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\EnumManager.cs" />
@@ -294,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801202215447_AddApplicationUserProperties.resx">
       <DependentUpon>201801202215447_AddApplicationUserProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801202321345_MadeApplicationUserDatePropertyNull.resx">
+      <DependentUpon>201801202321345_MadeApplicationUserDatePropertyNull.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

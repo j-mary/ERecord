@@ -64,7 +64,7 @@ namespace ERecord.ViewModel
         [Required]
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:d-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(ApplyFormatInEditMode = true)]
         public DateTime Dob { get; set; }
 
         [Required]
@@ -77,8 +77,10 @@ namespace ERecord.ViewModel
 
         [Required]
         [Display(Name = "Date Registered")]
-        [DisplayFormat(DataFormatString = "{0:d-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime DateCreated { get; set; }
+
+        public bool IsActive { get; set; } = false;
     }
 }

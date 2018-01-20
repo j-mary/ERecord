@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ERecord.Models;
+using ERecord.ViewModel;
 
 namespace ERecord.Controllers
 {
@@ -151,7 +152,24 @@ namespace ERecord.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PhoneNumber = model.PhoneNumber,
+                    Address = model.Address,
+                    City = model.City,
+                    State = model.State,
+                    Nationality = model.Nationality,
+                    Gender = model.Gender,
+                    Dob = model.Dob,
+                    MaritalStatus = model.MaritalStatus,
+                    NumberOfChildren = model.NumberOfChildren,
+                    DateCreated = DateTime.Now,
+                    IsActive = model.IsActive
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
