@@ -218,6 +218,7 @@
       <DependentUpon>201801202347219_SeedAdminRole.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\EnumManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
