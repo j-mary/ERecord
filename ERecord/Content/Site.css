@@ -1,12 +1,14 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
+    /*background-color: #EAEBEF;*/
+    height: 100vh;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    margin-top: 20px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -26,9 +28,9 @@ textarea {
 
 //ERecord CSS
 .field-validation-error,
-  label.error {
+ label.error {
       color: red;
-  }
+ }
 
 .input-validation-error,
 input.error {
@@ -41,4 +43,36 @@ input.error {
 
 .EmployeeName {
     color: red;
+}
+
+.bg-white {
+    background-color: #FFFFFF;
+}
+
+.bg-grey {
+    background-color: #4E5665;
+}
+
+.bg-ash {
+    background-color: #EAEBEF;
+}
+
+.color-green {
+    color: #36C9D6;
+}
+
+.height {
+    height: 100vh;
+}
+
+.height-short {
+    height: 80vh;
+}
+
+.minustwenty {
+    margin-bottom: 0px;
+}
+
+.bt-width-override {
+    width: 82.5% !important;
 }

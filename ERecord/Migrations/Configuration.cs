@@ -1,3 +1,7 @@
+using ERecord.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 namespace ERecord.Migrations
 {
     using System;
