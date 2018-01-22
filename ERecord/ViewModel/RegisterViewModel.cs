@@ -47,7 +47,7 @@ namespace ERecord.ViewModel
         }
 
         [Required]
-        public EnumManager.Gender Gender { get; set; }
+        public EnumManager.Gender? Gender { get; set; }
 
         [Required]
         public string Address { get; set; }
@@ -56,10 +56,10 @@ namespace ERecord.ViewModel
         public string City { get; set; }
 
         [Required]
-        public EnumManager.State State { get; set; }
+        public EnumManager.State? State { get; set; }
 
         [Required]
-        public EnumManager.Country Nationality { get; set; }
+        public EnumManager.Country? Nationality { get; set; }
 
         [Required]
         [Display(Name = "Date of Birth")]
@@ -69,7 +69,7 @@ namespace ERecord.ViewModel
 
         [Required]
         [Display(Name = "Marital Status")]
-        public EnumManager.MaritalStatus MaritalStatus { get; set; }
+        public EnumManager.MaritalStatus? MaritalStatus { get; set; }
 
         [Required]
         [Display(Name = "Number of Children (if any)")]

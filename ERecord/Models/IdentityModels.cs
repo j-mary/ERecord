@@ -40,13 +40,13 @@ namespace ERecord.Models
         public string City { get; set; }
 
         [Required]
-        public EnumManager.State State { get; set; }
+        public EnumManager.State? State { get; set; }
 
         [Required]
-        public EnumManager.Country Nationality { get; set; }
+        public EnumManager.Country? Nationality { get; set; }
 
         [Required]
-        public EnumManager.Gender Gender { get; set; }
+        public EnumManager.Gender? Gender { get; set; }
 
         [Required]
         [Display(Name = "Date of Birth")]
@@ -56,7 +56,7 @@ namespace ERecord.Models
 
         [Required]
         [Display(Name = "Marital Status")]
-        public EnumManager.MaritalStatus MaritalStatus { get; set; }
+        public EnumManager.MaritalStatus? MaritalStatus { get; set; }
 
         [Required]
         [Display(Name = "Number of Children (if any)")]

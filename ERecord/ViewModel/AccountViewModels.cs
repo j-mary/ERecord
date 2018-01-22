@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ERecord.Models
 {
@@ -60,6 +61,16 @@ namespace ERecord.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        [NotMapped]
+        public string FullName
+        {
+            get { return string.Format($"{FirstName} {LastName}"); }
+        }
     }
 
     public class ResetPasswordViewModel

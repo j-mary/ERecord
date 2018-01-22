@@ -1,120 +1,112 @@
 ﻿@model ERecord.ViewModel.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = null;
 }
 
+<!DOCTYPE html>
+<html lang="en" class="body-full-height">
+<head>
+    <link rel="stylesheet" type="text/css" id="theme" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" id="theme" href="~/Content/Site.css" />
+</head>
+<body class="reg-page">
+<div class="reg-logo">
+    <img src="~/Content/img/ems-logo.png" />
+</div>
+<h4 class="reg-h4">Create a new Employee Account.</h4>
+<div class="reg-form">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new {@class = "form-horizontal row", role = "form"}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "Please fix the following errors.", new {@class = "text-danger"})
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.TextBoxFor(m => m.FirstName, new {@class = "form-control", placeholder = "First Name"})
+                @Html.ValidationMessageFor(m => m.FirstName, null, new {@class = "text-danger"})
+            </div>
+            <div class="col-md-6">
+                @Html.TextBoxFor(m => m.LastName, new {@class = "form-control", placeholder = "Last Name"})
+                @Html.ValidationMessageFor(m => m.LastName, null, new {@class = "text-danger"})
+            </div>
+        </div>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new Employee Account.</h4>
-    <hr />
-    @Html.ValidationSummary(true, "Please fix the following errors.", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.FirstName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.TextBoxFor(m => m.Email, new {@class = "form-control", placeholder = "Email", type = "email"})
+                @Html.ValidationMessageFor(m => m.Email, null, new {@class = "text-danger"})
+            </div>
+            <div class="col-md-6">
+                @Html.TextBoxFor(m => m.PhoneNumber, new {@class = "form-control", placeholder = "Phone"})
+                @Html.ValidationMessageFor(m => m.PhoneNumber, null, new {@class = "text-danger"})
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.LastName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.Email, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.PhoneNumber, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.PhoneNumber, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.Address, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Address, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.City, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.City, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.State, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.EnumDropDownListFor(m => m.State, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.State, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Nationality, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.EnumDropDownListFor(m => m.Nationality, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Nationality, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.EnumDropDownListFor(m => m.Gender, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Gender, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Dob, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.Dob, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Dob, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.MaritalStatus, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.EnumDropDownListFor(m => m.MaritalStatus, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.MaritalStatus, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.NumberOfChildren, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.NumberOfChildren, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.NumberOfChildren, null, new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-warning" value="Register" />
-        </div>
-    </div>
-}
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.PasswordFor(m => m.Password, new {@class = "form-control", placeholder = "Password"})
+                @Html.ValidationMessageFor(m => m.Password, null, new {@class = "text-danger"})
+            </div>
+            <div class="col-md-6">
+                @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control", placeholder = "Confirm Password"})
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, null, new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.TextBoxFor(m => m.Address, new {@class = "form-control", placeholder = "Address"})
+                @Html.ValidationMessageFor(m => m.Address, null, new {@class = "text-danger"})
+            </div>
+            <div class="col-md-6">
+                @Html.TextBoxFor(m => m.City, new {@class = "form-control", placeholder = "City"})
+                @Html.ValidationMessageFor(m => m.City, null, new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.EnumDropDownListFor(m => m.State, "--Select State--", new {@class = "form-control"})
+                @Html.ValidationMessageFor(m => m.State, null, new {@class = "text-danger"})
+            </div>
+            <div class="col-md-6">
+                @Html.EnumDropDownListFor(m => m.Nationality, "--Select Country--", new {@class = "form-control"})
+                @Html.ValidationMessageFor(m => m.Nationality, null, new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.EnumDropDownListFor(m => m.Gender, "--Gender--", new {@class = "form-control"})
+                @Html.ValidationMessageFor(m => m.Gender, null, new {@class = "text-danger"})
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(m => m.Dob, null, "Date of Birth", new {htmlAttributes = new {@class = "form-control", @placeholder = "Date of Birth"}})
+                @Html.ValidationMessageFor(m => m.Dob, null, new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.EnumDropDownListFor(m => m.MaritalStatus, "--Marital Status--", new {@class = "form-control"})
+                @Html.ValidationMessageFor(m => m.MaritalStatus, null, new {@class = "text-danger"})
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(m => m.NumberOfChildren, new {htmlAttributes = new {@class = "form-control", placeholder = "Number of Children (If Any)"}})
+                @Html.ValidationMessageFor(m => m.NumberOfChildren, null, new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                <input type="submit" class="btn btn-warning" value="Register"/>
+            </div>
+        </div>
+    }
+    <div class="pull-right">
+        <a href="@Url.Action("Login", "Account")" class="btn btn-info btn-sm">Have an Account ? <span class="reg-login">Login Here</span></a>
+    </div>
+</div>
+<script src="~/Scripts/jquery.validate.js"></script>
+</body>
+</html>

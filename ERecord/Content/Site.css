@@ -26,7 +26,7 @@ textarea {
 }
 
 
-//ERecord CSS
+/*ERecord CSS*/
 .field-validation-error,
  label.error {
       color: red;
@@ -75,4 +75,33 @@ input.error {
 
 .bt-width-override {
     width: 82% !important;
+}
+
+/*ERecord Reg Page*/
+.reg-page {
+    margin: 0;
+    width: 100%;
+    background-color: #4e5665;
+    text-align: center;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.reg-form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.reg-logo {
+    margin-bottom: 20px;
+}
+
+.reg-h4 {
+    color: #5BC0DE;
+    margin-bottom: 30px;
+}
+
+.reg-login {
+    color: #FFE4BD;
+    font-weight: bold;
 }
