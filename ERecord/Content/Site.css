@@ -77,8 +77,9 @@ input.error {
     width: 82% !important;
 }
 
-/*ERecord Reg Page*/
-.reg-page {
+/*ERecord Reg and Login Page*/
+.reg-page,
+.login-page {
     margin: 0;
     width: 100%;
     background-color: #4e5665;
@@ -92,7 +93,13 @@ input.error {
     margin: 0 auto;
 }
 
-.reg-logo {
+.login-form {
+    width: 27%;
+    margin: 0 auto;
+}
+
+.reg-logo,
+.login-logo {
     margin-bottom: 20px;
 }
 
