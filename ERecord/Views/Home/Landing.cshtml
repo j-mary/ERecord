@@ -1,0 +1,148 @@
+﻿
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Landing</title>
+	<style>
+ /* ================================= 
+		Base Element Styles
+==================================== */
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: 'Varela Round', sans-serif;
+			color: #3a3a3a;
+		}
+
+		p {
+			font-size: 20px;
+			margin-bottom: 1.2em;
+			color: #FFE4BD;
+			font-family: helvetica, sans-serif; 
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		img {
+			max-width: 100%;
+		}
+
+ /*Remove default list styles, margins and padding.*/
+		ol, 
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+/*Navbar and content style*/
+		.main-header {
+			margin: 0 auto;
+			width: 100%;
+			position: fixed;
+			top: 0;
+			background: #fff;
+			z-index: 90000000000000;
+			box-shadow: 0 1px 4px rgba(0,0,0,.4);
+		}
+
+		.logo {
+			float: left;
+			padding: 16px;
+		}
+					   
+		.main-nav {
+			float: right;
+		}
+	
+		.main-nav li {
+			display: inline-block;
+			text-transform: uppercase;
+		}
+
+		.main-nav a {
+			display: block;
+			padding: 22px 30px;
+		}
+
+		.clearfix::after {
+			content: " ";
+			display: table;
+			clear: both;
+		} 
+
+		.bg-red {
+			color: #FFF;
+			background-color: #DD5347;
+			font-family: serif;
+			font-size: 12px;
+		}
+
+		.account {
+			width: 200px;
+			padding: 25px 0;
+			text-transform: uppercase;
+			text-align: center;
+			display: block;
+			border-radius: 5px;
+		}
+
+		.bg-normal:hover {
+			color: #DD5347;
+		}
+
+		.bg-normal {
+			color: #000;
+			font-size: 14px;
+		}
+
+		.content {
+			color: #FFF;
+			background-image: url('../../Content/img/LandingImage.png');
+			background-position: center;
+			background-repeat: no-repeat;
+			height: 100vh;
+			width: 100%;
+		}
+
+		.in-content {
+			padding-top: 15%;
+			padding-left: 10%;
+		}
+
+		.main-header {
+			margin-bottom: 0;
+		}
+	</style>
+</head>
+<body>
+<header class="main-header">
+	<div class="logo clearfix">
+		<img src="~/Content/img/ems-logo.png" /></div>
+	<nav class="main-nav clearfix">
+		<li><a href="#" class="bg-normal">Sign In</a></li>
+		<li><a href="#" class="bg-red">Create an Account</a></li>
+	</nav>
+</header>
+<div class="content">
+	<div class="in-content">
+		<p>Employee Management System</p>
+		<p>Beauty, Simplicity &</p>
+		<p>Everything Else</p>
+		<a href="#" class="account bg-red">Create an Account</a>
+	</div>
+</div>
+</body>
+</html>
