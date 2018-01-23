@@ -51,7 +51,7 @@ namespace ERecord.Models
         [Required]
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Dob { get; set; }
 
         [Required]
@@ -63,7 +63,7 @@ namespace ERecord.Models
         public int NumberOfChildren { get; set; }
 
         [Display(Name = "Employment Date")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime? EmploymentDay { get; set; }
 
@@ -74,12 +74,12 @@ namespace ERecord.Models
         public string MaximumQulaification { get; set; }
 
         [Display(Name = "Service Year")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime? ServiceYear { get; set; }
 
         [Display(Name = "Last Promoted")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime? LastPromoted { get; set; }
 
@@ -89,7 +89,7 @@ namespace ERecord.Models
         public decimal YearlySalary { get; set; }
 
         [Display(Name = "Date Registered")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime? DateCreated { get; set; }
 

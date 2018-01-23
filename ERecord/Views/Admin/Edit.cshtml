@@ -4,6 +4,10 @@
   ViewBag.Title = "Edit";
 }
 
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-sm" })
+</div>
+
 <div class="edit-page">
     <div class="edit-form">
         <h4 class="edit-h4">Edit <span class="display-name">@Model.FullName</span> Profile</h4>
@@ -14,7 +18,17 @@
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new {@class = "text-danger"})
                 @Html.HiddenFor(model => model.Id)
-                @Html.HiddenFor(model => model.UserName)
+                @Html.HiddenFor(model => model.DateCreated)
+                @Html.HiddenFor(model => model.EmailConfirmed)
+                @Html.HiddenFor(model => model.PasswordHash)
+                @Html.HiddenFor(model => model.SecurityStamp)
+                @Html.HiddenFor(model => model.PhoneNumberConfirmed)
+                @Html.HiddenFor(model => model.TwoFactorEnabled)
+                @Html.HiddenFor(model => model.LockoutEndDateUtc)
+                @Html.HiddenFor(model => model.LockoutEnabled)
+                @Html.HiddenFor(model => model.AccessFailedCount)
+                @Html.HiddenFor(model => model.Email)
+
 
                 <div class="form-group">
                     <div class="col-md-6">
@@ -127,9 +141,9 @@
                         @Html.ValidationMessageFor(model => model.YearlySalary, "", new {@class = "text-danger"})
                     </div>
                     <div class="col-md-6">
-                        @Html.LabelFor(model => model.Email, htmlAttributes: new {@class = "control-label"})
-                        @Html.EditorFor(model => model.Email, new {htmlAttributes = new {@class = "form-control"}})
-                        @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
+                        @Html.LabelFor(model => model.UserName, htmlAttributes: new {@class = "control-label"})
+                        @Html.EditorFor(model => model.UserName, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.UserName, "", new {@class = "text-danger"})
                     </div>
                 </div>
 

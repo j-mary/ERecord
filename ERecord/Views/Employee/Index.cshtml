@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<ERecord.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Employees</h2>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmploymentDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearlySalary)
+        </th>
+        <th>
+            Manage Employees
+        </th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmploymentDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearlySalary)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", null, new {id = item.Id}, new {@class = "btn btn-default btn-sm"}) |
+                @Html.ActionLink("Details", "Details", null, new {id = item.Id}, new {@class = "btn btn-info btn-sm"})
+            </td>
+        </tr>
+    }
+
+</table>

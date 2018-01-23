@@ -1,4 +1,5 @@
-﻿
+﻿@using System.Activities.Expressions
+@using Microsoft.AspNet.Identity
 @{
 	Layout = null;
 }
@@ -100,7 +101,7 @@
 		}
 
 		.bg-normal:hover {
-			color: #DD5347;
+			color: red;
 		}
 
 		.bg-normal {
@@ -125,17 +126,33 @@
 		.main-header {
 			margin-bottom: 0;
 		}
+
+		.inline-block {
+			display: inline-block;
+		}
 	</style>
 </head>
 <body>
-<header class="main-header">
-	<div class="logo clearfix">
-		<img src="~/Content/img/ems-logo.png" /></div>
-	<nav class="main-nav clearfix">
-		<li><a href="@Url.Action("Login", "Account")" class="bg-normal">Sign In</a></li>
-		<li><a href="@Url.Action("Register", "Account")" class="bg-red">Create an Account</a></li>
-	</nav>
-</header>
+	<header class="main-header">
+		<div class="logo clearfix">
+			<img src="~/Content/img/ems-logo.png" />
+		</div>
+		<nav class="main-nav clearfix">
+			@if (Request.IsAuthenticated)
+			{
+				using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "inline-block"}))
+				{
+					@Html.AntiForgeryToken()
+					<li><a class = "bg-normal" href = "javascript:document.getElementById('logoutForm').submit()" > Log off </a></li>
+				}
+			}
+			else
+			{
+				<li><a href="@Url.Action("Login", "Account")" class="bg-normal">Sign In</a></li>
+			}
+			<li><a href="@Url.Action("Register", "Account")" class="bg-red">Create an Account</a></li>
+		</nav>
+	</header>
 <div class="content">
 	<div class="in-content">
 		<p>Employee Management System</p>
