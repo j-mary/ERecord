@@ -112,3 +112,24 @@ input.error {
     color: #FFE4BD;
     font-weight: bold;
 }
+
+/*ERecord Edit Page*/
+.edit-page {
+    width: 100%;
+    margin: 0;
+    padding: 50px;
+}
+
+.edit-form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.edit-h4 {
+    text-align:justify;
+    margin-bottom: 30px;
+}
+
+.display-name {
+    color: khaki;
+}

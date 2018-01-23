@@ -21,77 +21,77 @@
             <div class="form-group">
                 <div class="col-md-6">
                     @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
-                    @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.FirstName)
                 </div>
                 <div class="col-md-6">
                     @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name" })
-                    @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.LastName)
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-6">
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email", type = "email" })
-                    @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.Email)
                 </div>
                 <div class="col-md-6">
                     @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Phone" })
-                    @Html.ValidationMessageFor(m => m.PhoneNumber, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.PhoneNumber)
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-6">
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
-                    @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.Password)
                 </div>
                 <div class="col-md-6">
                     @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
-                    @Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-6">
                     @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Address" })
-                    @Html.ValidationMessageFor(m => m.Address, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.Address)
                 </div>
                 <div class="col-md-6">
                     @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "City" })
-                    @Html.ValidationMessageFor(m => m.City, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.City)
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-6">
                     @Html.EnumDropDownListFor(m => m.State, "--Select State--", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.State, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.State)
                 </div>
                 <div class="col-md-6">
                     @Html.EnumDropDownListFor(m => m.Nationality, "--Select Country--", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Nationality, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.Nationality)
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-6">
                     @Html.EnumDropDownListFor(m => m.Gender, "--Gender--", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Gender, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.Gender)
                 </div>
                 <div class="col-md-6">
-                    @Html.EditorFor(m => m.Dob, null, "Date of Birth", new { htmlAttributes = new { @class = "form-control", @placeholder = "Date of Birth" } })
-                    @Html.ValidationMessageFor(m => m.Dob, null, new { @class = "text-danger" })
+                    @Html.EditorFor(m => m.Dob, new { htmlAttributes = new { @class = "form-control", @placeholder = "Date of Birth" } })
+                    @Html.ValidationMessageFor(m => m.Dob)
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-6">
                     @Html.EnumDropDownListFor(m => m.MaritalStatus, "--Marital Status--", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.MaritalStatus, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.MaritalStatus)
                 </div>
                 <div class="col-md-6">
                     @Html.EditorFor(m => m.NumberOfChildren, new { htmlAttributes = new { @class = "form-control", placeholder = "Number of Children (If Any)" } })
-                    @Html.ValidationMessageFor(m => m.NumberOfChildren, null, new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.NumberOfChildren)
                 </div>
             </div>
 
