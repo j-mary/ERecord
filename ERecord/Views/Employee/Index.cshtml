@@ -67,7 +67,7 @@
                 }
                 @if (item.Id == user)
                 {
-                    @Html.ActionLink("Edit", "Edit", null, new {Id = user}, new {@class = "btn btn-default btn-sm active"})
+                    @Html.ActionLink("Edit", "Edit", null, new {Id = item.Id}, new {@class = "btn btn-default btn-sm active"})
                 }
             </td>
         </tr>

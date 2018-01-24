@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -8,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using ERecord.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace ERecord.Controllers
 {
@@ -66,6 +65,21 @@ namespace ERecord.Controllers
                 return RedirectToAction("Index");
             }
             return View(applicationUser);
+        }
+
+        //public ActionResult Subordinates(ApplicationUser user) 
+        //{
+        //    var userPosition = user.Position;
+        //    return View(db.Users.Where(u => u.Position < userPosition).ToList());
+        //}
+
+        public ActionResult Subordinates()
+        {
+            //Get the ApplicationUser object in one line of code
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            //Check the Position of current logged in employee
+            var positionCheck = user.Position;
+            return View(db.Users.Where(u => u.Position < positionCheck).ToList());
         }
 
         protected override void Dispose(bool disposing)

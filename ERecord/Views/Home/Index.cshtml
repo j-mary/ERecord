@@ -1,5 +1,5 @@
 ﻿@model ERecord.Models.ApplicationUser
-@using ERecords.Models
+@using ERecord.Models
 @using Microsoft.AspNet.Identity
 @{
 	Layout = null;
@@ -29,12 +29,12 @@
 			}
 			else
 			{
-			    var user = User.Identity.GetUserId();
+				var user = User.Identity.GetUserId();
 				<span><i>Welcome! </i> &nbsp; &nbsp; &nbsp; <a href="@Url.Action("Index", "Employee", new {id = user})" class="btn btn-info btn-sm"> View Profiles</a></span>
 			}
 		}
 
-	    <span style="color: #FFE4BD">@ViewBag.LogoffMessage</span>
+		<span style="color: #FFE4BD">@ViewBag.LogoffMessage</span>
 	</div>
 		<nav class="main-nav clearfix">
 			@if (Request.IsAuthenticated)
@@ -46,8 +46,9 @@
 			}
 			else
 			{
-				<li><a href="@Url.Action("Login", "Account")" class="bg-normal">Sign In</a></li>}
-			<li><a href="@Url.Action("Register", "Account")" class="bg-red">Create an Account</a></li>
+				<li><a href="@Url.Action("Login", "Account")" class="bg-normal">Sign In</a></li>
+				<li><a href="@Url.Action("Register", "Account")" class="bg-red">Create an Account</a></li>
+			}
 		</nav>
 	</header>
 <div class="content">
@@ -55,7 +56,10 @@
 		<p>Employee Management System</p>
 		<p>Beauty, Simplicity &</p>
 		<p>Everything Else</p>
-		<a href="@Url.Action("Register", "Account")" class="account bg-red">Create an Account</a>
+		@if (!Request.IsAuthenticated)
+		{
+			<a href="@Url.Action("Register", "Account")" class="account bg-red">Create an Account</a>
+		}
 	</div>
 </div>
 </body>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ERecords.Models
+namespace ERecord.Models
 {
     public class EnumManager
     {
@@ -19,6 +19,14 @@ namespace ERecords.Models
             Married,
             Separated,
             Divorced
+        }
+
+        public enum Position
+        {
+            Intern = 1,
+            Software_Developer,
+            Manager,
+            CEO
         }
 
         public enum State

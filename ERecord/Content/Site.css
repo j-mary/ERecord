@@ -152,6 +152,7 @@ input.error {
 	left: 0;
 	background-color: #2D3945;
 	overflow-x: hidden;
+	z-index: 9999999;
 }
 
 .sidenav a:hover {

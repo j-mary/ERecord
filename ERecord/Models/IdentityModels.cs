@@ -1,11 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using ERecords.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -31,7 +28,11 @@ namespace ERecord.Models
             get { return string.Format($"{FirstName} {LastName}"); }
         }
 
+        [Display(Name = "Access")]
         public bool IsActive { get; set; } = false;
+
+        [Required]
+        public EnumManager.Position? Position { get; set; } = 0;
 
         [Required]
         public string Address { get; set; }

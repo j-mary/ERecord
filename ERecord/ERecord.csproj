@@ -219,6 +219,10 @@
     <Compile Include="Migrations\201801202347219_SeedAdminRole.Designer.cs">
       <DependentUpon>201801202347219_SeedAdminRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801241145133_AddPositionToApplicationUser.cs" />
+    <Compile Include="Migrations\201801241145133_AddPositionToApplicationUser.Designer.cs">
+      <DependentUpon>201801241145133_AddPositionToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="ViewModel\AccountViewModels.cs" />
@@ -299,6 +303,7 @@
     <Content Include="Views\Employee\Details.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\Subordinates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -323,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801202347219_SeedAdminRole.resx">
       <DependentUpon>201801202347219_SeedAdminRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801241145133_AddPositionToApplicationUser.resx">
+      <DependentUpon>201801241145133_AddPositionToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
