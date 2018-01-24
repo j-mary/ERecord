@@ -235,6 +235,7 @@
     <Content Include="Content\img\ems-logo-bg.png" />
     <Content Include="Content\img\ems-logo.png" />
     <Content Include="Content\img\LandingImage.png" />
+    <Content Include="Content\Landing.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -298,7 +299,6 @@
     <Content Include="Views\Employee\Details.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
-    <Content Include="Views\Employee\Personal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

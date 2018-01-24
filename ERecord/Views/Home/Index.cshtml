@@ -1,4 +1,5 @@
-﻿@using System.Activities.Expressions
+﻿@model ERecord.Models.ApplicationUser
+@using ERecords.Models
 @using Microsoft.AspNet.Identity
 @{
 	Layout = null;
@@ -8,148 +9,44 @@
 
 <html>
 <head>
-	<meta name="viewport" content="width=device-width" />
-	<title>Landing</title>
-	<style>
- /* ================================= 
-		Base Element Styles
-==================================== */
-
-		* {
-			box-sizing: border-box;
-			margin: 0;
-			padding: 0;
-		}
-
-		body {
-			font-family: 'Varela Round', sans-serif;
-			color: #3a3a3a;
-		}
-
-		p {
-			font-size: 20px;
-			margin-bottom: 1.2em;
-			color: #FFE4BD;
-			font-family: helvetica, sans-serif; 
-		}
-
-		a {
-			text-decoration: none;
-		}
-
-		img {
-			max-width: 100%;
-		}
-
- /*Remove default list styles, margins and padding.*/
-		ol, 
-		ul {
-			margin: 0;
-			padding: 0;
-			list-style: none;
-		}
-/*Navbar and content style*/
-		.main-header {
-			margin: 0 auto;
-			width: 100%;
-			position: fixed;
-			top: 0;
-			background: #fff;
-			z-index: 90000000000000;
-			box-shadow: 0 1px 4px rgba(0,0,0,.4);
-		}
-
-		.logo {
-			float: left;
-			padding: 16px;
-		}
-					   
-		.main-nav {
-			float: right;
-		}
-	
-		.main-nav li {
-			display: inline-block;
-			text-transform: uppercase;
-		}
-
-		.main-nav a {
-			display: block;
-			padding: 22px 30px;
-		}
-
-		.clearfix::after {
-			content: " ";
-			display: table;
-			clear: both;
-		} 
-
-		.bg-red {
-			color: #FFF;
-			background-color: #DD5347;
-			font-family: serif;
-			font-size: 12px;
-		}
-
-		.account {
-			width: 200px;
-			padding: 25px 0;
-			text-transform: uppercase;
-			text-align: center;
-			display: block;
-			border-radius: 5px;
-		}
-
-		.bg-normal:hover {
-			color: red;
-		}
-
-		.bg-normal {
-			color: #000;
-			font-size: 14px;
-		}
-
-		.content {
-			color: #FFF;
-			background-image: url('../../Content/img/LandingImage.png');
-			background-position: center;
-			background-repeat: no-repeat;
-			height: 100vh;
-			width: 100%;
-		}
-
-		.in-content {
-			padding-top: 15%;
-			padding-left: 10%;
-		}
-
-		.main-header {
-			margin-bottom: 0;
-		}
-
-		.inline-block {
-			display: inline-block;
-		}
-	</style>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title EMS - Index</title>
+	@Styles.Render("~/Content/css")
+	@Styles.Render("~/Content/landing.css")
+	@Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body class="landing">
 	<header class="main-header">
-		<div class="logo clearfix">
-			<img src="~/Content/img/ems-logo.png" />
-		</div>
-		<nav class="main-nav clearfix">
-			@if (Request.IsAuthenticated)
+	<div class="logo clearfix">
+		<img src="~/Content/img/ems-logo.png" />
+
+		@if (Request.IsAuthenticated)
+		{
+			if (User.IsInRole(RoleName.Admin))
 			{
-				using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "inline-block"}))
-				{
-					@Html.AntiForgeryToken()
-					<li><a class = "bg-normal" href = "javascript:document.getElementById('logoutForm').submit()" > Log off </a></li>
-				}
+				<span><i>Hello Admin! </i> &nbsp; &nbsp; &nbsp; <a href="@Url.Action("Index", "Admin")" class="btn btn-info btn-sm"> Manage Employees</a></span>
 			}
 			else
 			{
-				<li><a href="@Url.Action("Login", "Account")" class="bg-normal">Sign In</a></li>
+			    var user = User.Identity.GetUserId();
+				<span><i>Welcome! </i> &nbsp; &nbsp; &nbsp; <a href="@Url.Action("Index", "Employee", new {id = user})" class="btn btn-info btn-sm"> View Profiles</a></span>
 			}
+		}
+
+	    <span style="color: #FFE4BD">@ViewBag.LogoffMessage</span>
+	</div>
+		<nav class="main-nav clearfix">
+			@if (Request.IsAuthenticated)
+			{
+				using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "inline-block" }))
+				{
+					@Html.AntiForgeryToken()
+					<li><a class="bg-normal" href="javascript:document.getElementById('logoutForm').submit()"> Log off </a></li>}
+			}
+			else
+			{
+				<li><a href="@Url.Action("Login", "Account")" class="bg-normal">Sign In</a></li>}
 			<li><a href="@Url.Action("Register", "Account")" class="bg-red">Create an Account</a></li>
 		</nav>
 	</header>

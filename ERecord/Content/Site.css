@@ -1,201 +1,201 @@
 ﻿* {
-     box-sizing: border-box;
-     margin: 0;
-     padding: 0;
+	 box-sizing: border-box;
+	 margin: 0;
+	 padding: 0;
  }
 
 body {
-    /*padding-bottom: 20px;*/
-    /*background-color: #EAEBEF;*/
-    font-family: "Lato", sans-serif;
+	/*padding-bottom: 20px;*/
+	/*background-color: #EAEBEF;*/
+	font-family: "Lato", sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 20px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-top: 20px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
-    white-space: normal;
+	white-space: normal;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-    max-width: 280px;
+	max-width: 280px;
 }
 
 
 /*ERecord CSS*/
 .field-validation-error,
  label.error {
-      color: red;
+	  color: red;
  }
 
 .input-validation-error,
 input.error {
-    border: 2px solid red;
+	border: 2px solid red;
 }
 
 .validation-summary-errors {
-    color: red;
+	color: red;
 }
 
 .EmployeeName {
-    color: red;
+	color: red;
 }
 
 .bg-white {
-    background-color: #FFFFFF;
+	background-color: #FFFFFF;
 }
 
 /*.bg-grey {
-    background-color: #4E5665;
+	background-color: #4E5665;
 }
 
 .bg-ash {
-    background-color: #EAEBEF;
+	background-color: #EAEBEF;
 }
 
 .color-green {
-    color: #36C9D6;
+	color: #36C9D6;
 }
 
 .height {
-    height: 100vh;
+	height: 100vh;
 }
 
 .height-short {
-    height: 80vh;
+	height: 80vh;
 }
 
 .minustwenty {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 .bt-width-override {
-    width: 82% !important;
+	width: 82% !important;
 }*/
 
 
 /*ERecord Reg and Login Page*/
 .reg-page,
 .login-page {
-    margin: 0;
-    width: 100%;
-    background-color: #4e5665;
-    text-align: center;
-    padding: 50px;
-    box-sizing: border-box;
+	margin: 0;
+	width: 100%;
+	background-color: #4e5665;
+	text-align: center;
+	padding: 50px;
+	box-sizing: border-box;
 }
 
 .reg-form {
-    width: 50%;
-    margin: 0 auto;
+	width: 50%;
+	margin: 0 auto;
 }
 
 .login-form {
-    width: 27%;
-    margin: 0 auto;
+	width: 27%;
+	margin: 0 auto;
 }
 
 .reg-logo,
 .login-logo {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .reg-h4 {
-    color: #5BC0DE;
-    margin-bottom: 30px;
+	color: #5BC0DE;
+	margin-bottom: 30px;
 }
 
 .reg-login {
-    color: #FFE4BD;
-    font-weight: bold;
+	color: #FFE4BD;
+	font-weight: bold;
 }
 
 /*ERecord Edit Page*/
 .edit-page {
-    width: 100%;
-    margin: 0;
-    padding: 45px;
+	width: 100%;
+	margin: 0;
+	padding: 45px;
 }
 
 .edit-form {
-    width: 80%;
-    margin: 0 auto;
+	width: 80%;
+	margin: 0 auto;
 }
 
 .edit-h4 {
-    text-align:justify;
-    margin-bottom: 30px;
+	text-align:justify;
+	margin-bottom: 30px;
 }
 
 .display-name {
-    color: #FFE4BD;
+	color: #fd9a0b;
 }
 
 /*ERecord _Layout Page*/
 
 .sidenav {
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #2D3945;
-    overflow-x: hidden;
+	height: 100%;
+	width: 250px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #2D3945;
+	overflow-x: hidden;
 }
 
 .sidenav a:hover {
-    color: aliceblue;
+	color: aliceblue;
 }
 
 .main {
-    margin-left: 241px; /* Same as the width of the sidenav */
-    padding: 0px 10px;
+	margin-left: 241px; /* Same as the width of the sidenav */
+	padding: 0px 10px;
 }
 
 .nav-color {
-    background-color: #33414E;
+	background-color: #33414E;
 }
 .nav-bar a {
-    color: aliceblue;
+	color: aliceblue;
 }
 
 .navbar-nav > li > a {
-    color: #FFE4BD;
+	color: #FFE4BD;
 }
 
 .nav > li > a:hover, .nav > li > a:focus,
 .navbar-brand:hover, .navbar-brand:focus,
 .img-logo {
-    background-color: #250707;
+	background-color: #250707;
 }
 
 .navbar-brand,
 .navbar-nav > li > a.greeting {
-    color:aliceblue;
+	color:aliceblue;
 }
 
 .img-logo {
-    padding-bottom: 20px;
-    border-radius: 5px;
+	padding-bottom: 20px;
+	border-radius: 5px;
 }
 
 .add-new-employee {
-    margin-top: 70px;
-    margin-left: 30px;
+	margin-top: 70px;
+	margin-left: 30px;
 }
 
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+	.sidenav {padding-top: 15px;}
+	.sidenav a {font-size: 18px;}
 }

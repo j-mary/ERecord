@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - EMS</title>
+    <title>@ViewBag.Title EMS</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -15,10 +15,9 @@
     @if (User.IsInRole(RoleName.Admin))
     {
         <div class="add-new-employee">
-            &nbsp; <a href="@Url.Action("Create", "Admin")" class="btn btn-default">Add New Employee</a>
+            &nbsp; <a href="@Url.Action("Register", "Account")" class="btn btn-default">Add New Employee</a>
         </div>
     }
-
 </div>
 
 <div class="main">

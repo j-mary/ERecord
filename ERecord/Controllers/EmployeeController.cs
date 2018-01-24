@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ERecord.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ERecord.Controllers
 {
@@ -17,6 +18,7 @@ namespace ERecord.Controllers
         // GET: Employee
         public ActionResult Index()
         {
+            ViewBag.Id = User.Identity.GetUserId();
             return View(db.Users.Where(u => u.Email != "admin@erecord.com" && u.Email != "guest@erecord.com").ToList());
         }
 

@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ERecord.Models;
+using ERecords.Models;
 
 namespace ERecord.Controllers
 {
+    [Authorize(Roles = RoleName.Admin)]
     public class AdminController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
