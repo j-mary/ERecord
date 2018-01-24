@@ -1,6 +1,7 @@
 ﻿@model ERecord.Models.ApplicationUser
 @using ERecord.Models
 @using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
 @{
 	Layout = null;
 }
@@ -20,21 +21,26 @@
 	<header class="main-header">
 	<div class="logo clearfix">
 		<img src="~/Content/img/ems-logo.png" />
+		
+		@{
+			//Get the ApplicationUser object in one line of code
+			ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+		}
 
 		@if (Request.IsAuthenticated)
 		{
 			if (User.IsInRole(RoleName.Admin))
 			{
-				<span><i>Hello Admin! </i> &nbsp; &nbsp; &nbsp; <a href="@Url.Action("Index", "Admin")" class="btn btn-info btn-sm"> Manage Employees</a></span>
+				<span><i class="nice-color">Hello Admin! </i> &nbsp; &nbsp; &nbsp; <a href="@Url.Action("Index", "Admin")" class="btn btn-info btn-sm"> Manage Employees</a></span>
 			}
 			else
 			{
-				var user = User.Identity.GetUserId();
-				<span><i>Welcome! </i> &nbsp; &nbsp; &nbsp; <a href="@Url.Action("Index", "Employee", new {id = user})" class="btn btn-info btn-sm"> View Profiles</a></span>
+				var userId = User.Identity.GetUserId();
+				<span><i class="nice-color">Welcome @user.FullName! </i> &nbsp; &nbsp; &nbsp; <a href="@Url.Action("Index", "Employee", new {id = userId})" class="btn btn-info btn-sm"> View Profiles</a></span>
 			}
 		}
 
-		<span style="color: #FFE4BD">@ViewBag.LogoffMessage</span>
+		<span class="nice-color">@ViewBag.LogoffMessage</span>
 	</div>
 		<nav class="main-nav clearfix">
 			@if (Request.IsAuthenticated)

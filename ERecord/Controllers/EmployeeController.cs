@@ -67,12 +67,6 @@ namespace ERecord.Controllers
             return View(applicationUser);
         }
 
-        //public ActionResult Subordinates(ApplicationUser user) 
-        //{
-        //    var userPosition = user.Position;
-        //    return View(db.Users.Where(u => u.Position < userPosition).ToList());
-        //}
-
         public ActionResult Subordinates()
         {
             //Get the ApplicationUser object in one line of code

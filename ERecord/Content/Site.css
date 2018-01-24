@@ -33,6 +33,14 @@ textarea {
 
 
 /*ERecord CSS*/
+.nice-color {
+	color: #f80e0e;
+}
+
+.ems-color {
+	color: #FFE4BD;
+}
+
 .field-validation-error,
  label.error {
 	  color: red;

@@ -5,7 +5,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-sm" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info btn-sm" })
 </div>
 
 <div class="edit-page">
@@ -22,11 +22,11 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.IsActive)
+                @Html.HiddenFor(model => model.IsActive)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.IsActive)
+                @Html.HiddenFor(model => model.IsActive)
             </dd>
 
             <dt>
@@ -150,11 +150,11 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.HiddenFor(model => model.Email)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Email)
+                @Html.HiddenFor(model => model.Email)
             </dd>
 
             <dt>
@@ -241,5 +241,5 @@
     </div>
 </div>
 <div>
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-sm" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info btn-sm" })
 </div>
