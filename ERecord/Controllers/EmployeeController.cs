@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -15,10 +16,41 @@ namespace ERecord.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Employee
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            ViewBag.Id = User.Identity.GetUserId();
-            return View(db.Users.Where(u => u.Email != "admin@erecord.com" && u.Email != "guest@erecord.com").ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.City = sortOrder == "City" ? "city_desc" : "City";
+            ViewBag.Gender = sortOrder == "Gender" ? "gender_desc" : "Gender";
+            var users = db.Users.Where(u => u.Email != "admin@erecord.com" && u.Email != "guest@erecord.com");
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    users = users.OrderByDescending(s => s.FirstName);
+                    break;
+                case "Date":
+                    users = users.OrderBy(s => s.EmploymentDay);
+                    break;
+                case "date_desc":
+                    users = users.OrderByDescending(s => s.EmploymentDay);
+                    break;
+                case "City":
+                    users = users.OrderBy(s => s.City);
+                    break;
+                case "city_desc":
+                    users = users.OrderByDescending(s => s.City);
+                    break;
+                case "Gender":
+                    users = users.OrderBy(s => s.Gender);
+                    break;
+                case "gender_desc":
+                    users = users.OrderByDescending(s => s.Gender);
+                    break;
+                default:
+                    users = users.OrderBy(s => s.FirstName);
+                    break;
+            }
+            return View(users.ToList());
         }
 
         // GET: Employee/Details/5

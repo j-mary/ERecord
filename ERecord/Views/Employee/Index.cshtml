@@ -11,7 +11,7 @@
 <table class="table table-bordered table-hover">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FullName)
+            @Html.ActionLink("Full Name", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
@@ -23,13 +23,13 @@
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Gender)
+            @Html.ActionLink("Gender", "Index", new { sortOrder = ViewBag.Gender })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EmploymentDay)
+            @Html.ActionLink("Enrollment Date", "Index", new { sortOrder = ViewBag.DateSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.YearlySalary)
+            @Html.ActionLink("City", "Index", new { sortOrder = ViewBag.City })
         </th>
         <th>
             Details
@@ -57,7 +57,7 @@
                 @Html.DisplayFor(modelItem => item.EmploymentDay)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.YearlySalary)
+                @Html.DisplayFor(modelItem => item.City)
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", null, new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
