@@ -184,15 +184,15 @@ namespace ERecord.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                return RedirectToAction("Pending", "Employee");
                 }
                 AddErrors(result);
             }
@@ -200,6 +200,75 @@ namespace ERecord.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
+
+
+
+        ////   For Admin to Create a User Profile *********************************************************************************************************************************
+
+        [Authorize(Roles = RoleName.Admin)]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+
+
+        [HttpPost]
+        [Authorize(Roles = RoleName.Admin)]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(AdminCreateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PhoneNumber = model.PhoneNumber,
+                    Address = model.Address,
+                    City = model.City,
+                    State = model.State,
+                    Nationality = model.Nationality,
+                    Gender = model.Gender,
+                    Dob = model.Dob,
+                    MaritalStatus = model.MaritalStatus,
+                    NumberOfChildren = model.NumberOfChildren,
+                    DateCreated = DateTime.Now,
+                    IsActive = model.IsActive,
+                    EmploymentDay = model.EmploymentDay,
+                    SchoolAttended = model.SchoolAttended,
+                    MaximumQulaification = model.MaximumQulaification,
+                    ServiceYear = model.ServiceYear,
+                    LastPromoted = model.LastPromoted,
+                    YearlySalary = model.YearlySalary,
+                    Position = model.Position
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                    return RedirectToAction("Index", "Admin");
+            }
+
+            // If we got this far, something failed, redisplay form
+            if (model.Position == 0)
+            {
+                ViewBag.Message = "Please asign a position to this employee.";
+                return View(model);
+            }
+            return View(model);
+        }
+
+        //*********************************************************************************************************************************************************************
+
+
+
+
+
+
+
 
         //
         // GET: /Account/ConfirmEmail

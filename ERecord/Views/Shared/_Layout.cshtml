@@ -17,7 +17,7 @@
     @if (User.IsInRole(RoleName.Admin))
     {
         <div class="add-new-employee">
-            &nbsp; <a href="@Url.Action("Register", "Account")" class="btn btn-default">Add New Employee</a>
+            &nbsp; <a href="@Url.Action("Create", "Account")" class="btn btn-default">Add New Employee</a>
         </div>
     }
     else

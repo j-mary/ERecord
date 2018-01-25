@@ -228,6 +228,7 @@
     <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\EnumManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ViewModel\AdminCreateViewModel.cs" />
     <Compile Include="ViewModel\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -238,6 +239,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\ems-logo-bg.png" />
     <Content Include="Content\img\ems-logo.png" />
+    <Content Include="Content\img\fa fa-check.png" />
     <Content Include="Content\img\LandingImage.png" />
     <Content Include="Content\Landing.css" />
     <Content Include="favicon.ico" />
@@ -294,7 +296,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
@@ -304,6 +305,8 @@
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Subordinates.cshtml" />
+    <Content Include="Views\Employee\Pending.cshtml" />
+    <Content Include="Views\Account\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

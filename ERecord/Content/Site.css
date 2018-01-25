@@ -93,6 +93,10 @@ input.error {
 
 
 /*ERecord Reg and Login Page*/
+label.control-label {
+	color: #7fa491;
+	/*color: #a4957f;*/
+}
 .reg-page,
 .login-page {
 	margin: 0;
@@ -106,6 +110,7 @@ input.error {
 .reg-form {
 	width: 50%;
 	margin: 0 auto;
+	text-align: left;
 }
 
 .login-form {

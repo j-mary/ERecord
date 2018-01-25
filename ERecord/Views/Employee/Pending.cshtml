@@ -1,0 +1,34 @@
+﻿@{
+    Layout = null;
+}
+
+<h2>@ViewBag.Title.</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css"/>
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
+</head>
+<body class="login-page">
+<a href="@Url.Action("Index", "Home")"><div class="login-logo"><img src="~/Content/img/ems-logo.png" /></div></a>
+
+    <br><i><img src="~/Content/img/fa fa-check.png" /></i>
+
+<h4 class="reg-h4">Your Records Have Been Stored Successfully</h4>
+
+    <div class="row login-form">
+        <div class="col-md-12">
+            <section id="loginForm">
+                <div><i class="fa fa-check fa-lg" style="color:#28A745;"></i></div>
+                <div class="ems-color">Please await Admin Approval</div>
+                <br/>
+                <div class="col-md-12">
+                    <a href="mailto:slamdam27@gmail.com" class="btn btn-info btn-block btn-lg">Contact Admin</a>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery.validate.js"></script>
+</body>
+</html>

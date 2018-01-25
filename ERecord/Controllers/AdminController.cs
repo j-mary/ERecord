@@ -39,29 +39,6 @@ namespace ERecord.Controllers
             return View(applicationUser);
         }
 
-        // GET: Employee/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Employee/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,IsActive,Address,City,State,Nationality,Gender,Dob,MaritalStatus,NumberOfChildren,EmploymentDay,SchoolAttended,MaximumQulaification,ServiceYear,LastPromoted,YearlySalary,DateCreated,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Users.Add(applicationUser);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(applicationUser);
-        }
-
         // GET: Employee/Edit/5
         public ActionResult Edit(string id)
         {

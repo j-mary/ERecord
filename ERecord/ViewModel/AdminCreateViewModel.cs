@@ -1,15 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+using System.Linq;
+using System.Web;
+using ERecord.Models;
 
-namespace ERecord.Models
+namespace ERecord.ViewModel
 {
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/LinkID=317594 to learn more.
-    public class ApplicationUser : IdentityUser
+    public class AdminCreateViewModel
     {
         [Required]
         [StringLength(30, ErrorMessage = "Please enter between {2} to {1} Characters.", MinimumLength = 2)]
@@ -21,18 +20,37 @@ namespace ERecord.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
         [NotMapped]
-        [Display(Name = "Name")]
         public string FullName
         {
             get { return string.Format($"{FirstName} {LastName}"); }
         }
 
-        [Display(Name = "Access")]
-        public bool IsActive { get; set; } = false;
-
         [Required]
         public EnumManager.Position? Position { get; set; } = 0;
+
+        [Required]
+        public EnumManager.Gender? Gender { get; set; }
 
         [Required]
         public string Address { get; set; }
@@ -47,13 +65,10 @@ namespace ERecord.Models
         public EnumManager.Country? Nationality { get; set; }
 
         [Required]
-        public EnumManager.Gender? Gender { get; set; }
-
-        [Required]
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime? Dob { get; set; }
+        public DateTime Dob { get; set; }
 
         [Required]
         [Display(Name = "Marital Status")]
@@ -63,15 +78,19 @@ namespace ERecord.Models
         [Display(Name = "Number of Children (if any)")]
         public int NumberOfChildren { get; set; }
 
+        [Required]
+        [Display(Name = "Date Registered")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        public DateTime DateCreated { get; set; }
+
+        [Display(Name = "Access")]
+        public bool IsActive { get; set; }
+
         [Display(Name = "Employment Date")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime? EmploymentDay { get; set; }
-
-        internal bool IfNotNull(ApplicationUser employee)
-        {
-            throw new NotImplementedException();
-        }
 
         [Display(Name = "School Attended")]
         public string SchoolAttended { get; set; }
@@ -93,31 +112,5 @@ namespace ERecord.Models
         [DisplayFormat(DataFormatString = "${0}", ApplyFormatInEditMode = false)]
         [DataType(DataType.Currency)]
         public decimal YearlySalary { get; set; }
-
-        [Display(Name = "Date Registered")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [DataType(DataType.Date)]
-        public DateTime? DateCreated { get; set; }
-
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
-        {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
-            return userIdentity;
-        }
-    }
-
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
     }
 }

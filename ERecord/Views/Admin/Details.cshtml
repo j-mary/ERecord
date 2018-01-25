@@ -10,7 +10,7 @@
 
 <div class="edit-page">
     <div class="edit-form">
-        <h4>Details of <span class="display-name">@Model.FullName</span></h4>
+        @*<h4>Details of <span class="display-name">@Model.FullName</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="display-name">View @Model.LastName's</span> <i><a class = "btn btn-default btn-sm" href="@Url.Action("Subordinates", "Employee")">Surbodinates</a></i></h4>*@
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -131,6 +131,14 @@
 
             <dd>
                 @Html.DisplayFor(model => model.LastPromoted)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Position)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Position)
             </dd>
 
             <dt>

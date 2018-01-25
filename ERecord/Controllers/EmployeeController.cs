@@ -73,7 +73,19 @@ namespace ERecord.Controllers
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             //Check the Position of current logged in employee
             var positionCheck = user.Position;
+            var subordinateCount = db.Users.Where(u => u.Position < positionCheck).Count();
+            if (subordinateCount.Equals(0))
+            {
+                ViewBag.Message = "You don't have Subordinates at this time";
+                return View(db.Users.Where(u => u.Position < positionCheck).ToList());
+            }
+
             return View(db.Users.Where(u => u.Position < positionCheck).ToList());
+        }
+
+        public ActionResult Pending()
+        {
+            return View();
         }
 
         protected override void Dispose(bool disposing)
