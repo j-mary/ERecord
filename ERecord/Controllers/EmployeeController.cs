@@ -83,11 +83,6 @@ namespace ERecord.Controllers
             return View(db.Users.Where(u => u.Position < positionCheck).ToList());
         }
 
-        public ActionResult Pending()
-        {
-            return View();
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
