@@ -213,3 +213,9 @@ label.control-label {
 	.sidenav {padding-top: 15px;}
 	.sidenav a {font-size: 18px;}
 }
+
+/*ERecord Index Pages*/
+
+.form-control {
+	display: inline-block;
+}
