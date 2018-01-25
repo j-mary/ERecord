@@ -104,7 +104,7 @@ namespace ERecord.Controllers
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ModelState.AddModelError("", "Record not found! Please Register.");
                 return View(model);

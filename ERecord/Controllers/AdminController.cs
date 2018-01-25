@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -19,9 +20,48 @@ namespace ERecord.Controllers
         }
 
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            return View(db.Users.Where(u => u.Email != "admin@erecord.com" && u.Email != "guest@erecord.com").ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.SalarySortParm = sortOrder == "YearlySalary" ? "salary_desc" : "YearlySalary";
+            ViewBag.Gender = sortOrder == "Gender" ? "gender_desc" : "Gender";
+            ViewBag.Position = sortOrder == "Position" ? "position_desc" : "Position";
+            var users = db.Users.Where(u => u.Email != "admin@erecord.com" && u.Email != "guest@erecord.com");
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    users = users.OrderByDescending(s => s.FirstName);
+                    break;
+                case "Date":
+                    users = users.OrderBy(s => s.EmploymentDay);
+                    break;
+                case "date_desc":
+                    users = users.OrderByDescending(s => s.EmploymentDay);
+                    break;
+                case "YearlySalary":
+                    users = users.OrderBy(s => s.YearlySalary);
+                    break;
+                case "salary_desc":
+                    users = users.OrderByDescending(s => s.YearlySalary);
+                    break;
+                case "Gender":
+                    users = users.OrderBy(s => s.Gender);
+                    break;
+                case "gender_desc":
+                    users = users.OrderByDescending(s => s.Gender);
+                    break;
+                case "Position":
+                    users = users.OrderBy(s => s.Position);
+                    break;
+                case "position_desc":
+                    users = users.OrderByDescending(s => s.Position);
+                    break;
+                default:
+                    users = users.OrderBy(s => s.FirstName);
+                    break;
+            }
+            return View(users.ToList());
         }
 
         // GET: Admin/Details/5
