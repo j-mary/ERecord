@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     <p>
-        <h4 style="color: #DE3131;">Find Employee by name:</h4> @Html.TextBox("SearchString", null, new { @class = "form-control"})
+        <h4 style="color: #DE3131;">Find Employee by name:</h4> @Html.TextBox("SearchString", null, new { @class = "form-control", style= "display: inline-block;" })
         <input class="btn btn-primary btn-sm" type="submit" value="Search" />
     </p>
 }

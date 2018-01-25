@@ -8,6 +8,14 @@
 
 <h2>List of Employees</h2>
 
+@using (Html.BeginForm())
+{
+    <p>
+        <h4 style="color: #DE3131;">Find Colleague by name:</h4> @Html.TextBox("SearchString", null, new { @class = "form-control", style = "display: inline-block;" })
+        <input class="btn btn-primary btn-sm" type="submit" value="Search" />
+    </p>
+}
+
 <table class="table table-bordered table-hover">
     <tr>
         <th>

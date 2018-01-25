@@ -16,13 +16,19 @@ namespace ERecord.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Employee
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewBag.City = sortOrder == "City" ? "city_desc" : "City";
             ViewBag.Gender = sortOrder == "Gender" ? "gender_desc" : "Gender";
             var users = db.Users.Where(u => u.Email != "admin@erecord.com" && u.Email != "guest@erecord.com");
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                users = users.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper()) || s.FirstName.ToUpper().Contains(searchString.ToUpper()));
+            }
+
             switch (sortOrder)
             {
                 case "name_desc":
