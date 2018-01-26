@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="~/Content/Site.css">
+<style>
+    .mySlides {display:none;}
+    body { padding: 10px;}
+</style>
+<body>
+
+<div style="max-width:400px">
+    <div class="mySlides" style="color: #333; background: aliceblue">
+        <h1><b>Welcome!</b></h1>
+        <h3><i>With EMS your organisation is covered</i></h3>
+    </div>
+
+    <div class="mySlides" style="color: aliceblue; background: coral ">
+        <h2><b>Did You Know?</b></h2>
+        <h3><i>EMS is the first of its kind</i></h3>
+    </div>
+
+    <div class="mySlides" style="background: aliceblue">
+        <h2><span style="color: aliceblue; background: firebrick">New!</span></h2>
+        <h3>Improved Security</h3>
+        <h3>Enhanced Functionality</h3>
+        <h3>Easy Navigation</h3>
+    </div>
+
+    <div class="mySlides" style="color: aliceblue; background: crimson">
+        <h1><b>EMS</b></h1>
+        <h1><i>Your best beat</i></h1>
+    </div>
+</div>
+
+<script>
+    var slideIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none"; 
+        }
+        slideIndex++;
+        if (slideIndex > x.length) {slideIndex = 1} 
+        x[slideIndex-1].style.display = "block"; 
+        setTimeout(carousel, 4000); 
+    }
+</script>
+
+</body>
+</html>
+

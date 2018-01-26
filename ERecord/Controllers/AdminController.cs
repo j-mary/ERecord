@@ -29,6 +29,7 @@ namespace ERecord.Controllers
             ViewBag.Position = sortOrder == "Position" ? "position_desc" : "Position";
             var users = db.Users.Where(u => u.Email != "admin@erecord.com" && u.Email != "guest@erecord.com");
 
+            //Takes care of serachString **********
             if (!String.IsNullOrEmpty(searchString))
             {
                 users = users.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper()) || s.FirstName.ToUpper().Contains(searchString.ToUpper()));
@@ -37,7 +38,7 @@ namespace ERecord.Controllers
             if (users.Count() == 0)
             {
                 ViewBag.SearchMessage = "No Employee Found based on your search term";
-            }
+            }//*********** End of serachString
 
             switch (sortOrder)
             {

@@ -307,6 +307,7 @@
     <Content Include="Views\Employee\Subordinates.cshtml" />
     <Content Include="Views\Account\Pending.cshtml" />
     <Content Include="Views\Account\Create.cshtml" />
+    <Content Include="Views\Shared\_Slides.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

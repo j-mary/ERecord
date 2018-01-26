@@ -209,7 +209,17 @@ label.control-label {
 	margin-left: 30px;
 }
 
+.slides {
+	width: 99%;
+}
+
+.mySlides {
+	margin-top: 90px;
+	padding: 10px;
+}
+
 @media screen and (max-height: 450px) {
 	.sidenav {padding-top: 15px;}
 	.sidenav a {font-size: 18px;}
 }
+style="color: aliceblue; background: firebrick"
