@@ -34,6 +34,11 @@ namespace ERecord.Controllers
                 users = users.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper()) || s.FirstName.ToUpper().Contains(searchString.ToUpper()));
             }
 
+            if (users.Count() == 0)
+            {
+                ViewBag.SearchMessage = "No Employee Found based on your search term";
+            }
+
             switch (sortOrder)
             {
                 case "name_desc":

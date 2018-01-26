@@ -32,7 +32,7 @@
             @Html.ActionLink("Gender", "Index", new { sortOrder = ViewBag.Gender })
         </th>
         <th>
-            @Html.ActionLink("Enrollment Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+            @Html.ActionLink("Employment Date", "Index", new { sortOrder = ViewBag.DateSortParm })
         </th>
         <th>
             @Html.ActionLink("Yearly Salary", "Index", new { sortOrder = ViewBag.SalarySortParm })
@@ -42,35 +42,35 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Position)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmploymentDay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.YearlySalary)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", null, new { id=item.Id}, new { @class = "btn btn-default btn-sm"}) |
-            @Html.ActionLink("Details", "Details", null, new { id=item.Id}, new { @class = "btn btn-info btn-sm" }) |
-            @Html.ActionLink("Delete", "Delete", null, new { id=item.Id}, new { @class = "btn btn-danger btn-sm" })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmploymentDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearlySalary)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", null, new { id=item.Id}, new { @class = "btn btn-default btn-sm"}) |
+                @Html.ActionLink("Details", "Details", null, new { id=item.Id}, new { @class = "btn btn-info btn-sm" }) |
+                @Html.ActionLink("Delete", "Delete", null, new { id=item.Id}, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
 </table>
+<div style="text-align: center" class="nice-color">@ViewBag.SearchMessage</div>

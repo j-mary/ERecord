@@ -20,13 +20,19 @@ namespace ERecord.Controllers
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewBag.City = sortOrder == "City" ? "city_desc" : "City";
+            ViewBag.States = sortOrder == "States" ? "states_desc" : "States";
             ViewBag.Gender = sortOrder == "Gender" ? "gender_desc" : "Gender";
             var users = db.Users.Where(u => u.Email != "admin@erecord.com" && u.Email != "guest@erecord.com");
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 users = users.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper()) || s.FirstName.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            if (users.Count() == 0) 
+            {
+                ViewBag.SearchMessage = "No Employee Found based on your search term";
+
             }
 
             switch (sortOrder)
@@ -40,11 +46,11 @@ namespace ERecord.Controllers
                 case "date_desc":
                     users = users.OrderByDescending(s => s.EmploymentDay);
                     break;
-                case "City":
-                    users = users.OrderBy(s => s.City);
+                case "States":
+                    users = users.OrderBy(s => s.State);
                     break;
-                case "city_desc":
-                    users = users.OrderByDescending(s => s.City);
+                case "state_desc":
+                    users = users.OrderByDescending(s => s.State);
                     break;
                 case "Gender":
                     users = users.OrderBy(s => s.Gender);
