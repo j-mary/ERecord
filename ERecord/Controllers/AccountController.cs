@@ -214,6 +214,8 @@ namespace ERecord.Controllers
         [Authorize(Roles = RoleName.Admin)]
         public ActionResult Create()
         {
+            // This will clear whatever form items have been populated
+            ModelState.Clear();
             return View();
         }
 

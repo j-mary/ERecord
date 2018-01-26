@@ -67,6 +67,7 @@ namespace ERecord.Controllers
                     users = users.OrderBy(s => s.FirstName);
                     break;
             }
+
             return View(users.ToList());
         }
 

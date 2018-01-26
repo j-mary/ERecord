@@ -59,14 +59,30 @@
 	</header>
 <div class="content">
 	<div class="in-content">
-		<p>Employee Management System</p>
-		<p>Beauty, Simplicity &</p>
-		<p>Everything Else</p>
+		@if (User.IsInRole(RoleName.Admin))
+		{
+			<p>Registered Employees: <span style="color: #19ec19;">@ViewBag.AllEmployeesCount</span></p>
+			<p>Employees with Access: <span style="color: #19ec19;">@ViewBag.ApprovedEmployeesCount</span></p>
+			<p>Employees without Access: <span style="color: #19ec19;">@ViewBag.UnApprovedEmployeesCount</span></p>
+		}
+		else
+		{
+			<p>Employee Management System</p>
+			<p>Beauty, Simplicity &</p>
+			<p>Everything Else</p>
+		}
 		@if (!Request.IsAuthenticated)
 		{
 			<a href="@Url.Action("Register", "Account")" class="account bg-red">Create an Account</a>
 		}
 	</div>
 </div>
+
+<script>
+	var UnApprovedEmployeesCount = @Html.Raw(ViewBag.UnApprovedEmployeesCount);
+	var ApprovedEmployeesCount = @Html.Raw(ViewBag.ApprovedEmployeesCount);
+	var AllEmployeesCount = @Html.Raw(ViewBag.AllEmployeesCount);
+</script>
+
 </body>
 </html>
