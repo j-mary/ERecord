@@ -10,7 +10,7 @@
 <div class="edit-page">
     <h4 class="reg-h4" style="text-align: center">Create a new Employee Account.</h4>
     <div class="edit-form">
-        @using (Html.BeginForm("Create", "Account", FormMethod.Post, new {@class = "form-horizontal row", role = "form"}))
+        @using (Html.BeginForm("Create", "Account", FormMethod.Post, new { id="create", @class = "form-horizontal row", role = "form"}))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "Please fix the following errors.", new {@class = "text-danger"})
@@ -172,3 +172,14 @@
 <div>
     <a class="btn btn-info btn-sm" href="@Url.Action("Index", "Admin")">Back to List</a>
 </div>
+
+@section scripts
+{
+    <script>
+        function init() {
+            document.getElementById("create").reset();
+        }
+
+        window.onload = init;
+    </script>
+}
