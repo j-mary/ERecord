@@ -48,7 +48,7 @@
 				using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "inline-block" }))
 				{
 					@Html.AntiForgeryToken()
-					<li><a style="color: red" class="bg-normal" href="javascript:document.getElementById('logoutForm').submit()"> Log off </a></li>}
+					<li><a style="color: red; font-weight: bold;" class="bg-normal" href="javascript:document.getElementById('logoutForm').submit()"> Log off </a></li>}
 			}
 			else
 			{
