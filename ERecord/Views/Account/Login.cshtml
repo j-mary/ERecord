@@ -16,60 +16,65 @@
     <a href="@Url.Action("Index", "Home")"><div class="login-logo"><img src="~/Content/img/ems-logo.png" /></div></a>
     <h4 class="reg-h4">Login to an approved account</h4>
 
-<p style="color: #FFE4BD">@ViewBag.UnapprovedMessage</p>
+<p style="color: #FFE4BD">@Html.Raw(ViewBag.UnapprovedMessage)</p>
 
-    <div class="row login-form">
-        <div class="col-md-12">
-            <section id="loginForm">
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+<div class="row login-form">
+    <div class="col-md-12">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id="login", @class = "form-horizontal", role = "form" }))
             {
-                    @Html.AntiForgeryToken()
+                @Html.AntiForgeryToken()
                     @*<h4>Use a local account to log in.</h4>*@
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-mail" })
-                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-mail" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe, new { style = "color: white" })
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-6 col-md-6">
+                        <input type="submit" value="Log in" class="btn btn-primary" />
                     </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <div class="checkbox">
-                                    @Html.CheckBoxFor(m => m.RememberMe)
-                                    @Html.LabelFor(m => m.RememberMe, new { style = "color: white" })
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-6 col-md-6">
-                                <input type="submit" value="Log in" class="btn btn-primary" />
-                            </div>
-                        </div>
-                        <div>
-                            <a href="@Url.Action("Register", "Account")" class="btn btn-info btn-sm">Dont have an Account ? <span class="reg-login">Register Here</span></a>
-                        </div>
+                </div>
+                <div>
+                    <a href="@Url.Action("Register", "Account")" class="btn btn-info btn-sm">Dont have an Account ? <span class="reg-login">Register Here</span></a>
+                </div>
 
                         @* Enable this once you have account confirmation enabled for password reset functionality
                             <p>
                                 @Html.ActionLink("Forgot your password?", "ForgotPassword")
                             </p>*@
-                }
-            </section>
-        </div>
-        @*<div class="col-md-4">
+            }
+        </section>
+    </div>
+    @*<div class="col-md-4">
                 <section id="socialLoginForm">
                     @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
                 </section>
             </div>*@
-    </div>
+</div>
+<script type="text/javascript">
+    function init() {
+        document.getElementById("login").reset();
+    }
 
-    <script src="~/Scripts/jquery.validate.js"></script>
+    window.onload = init;
+</script>
 </body>
 
 </html>

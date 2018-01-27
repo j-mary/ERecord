@@ -82,7 +82,7 @@ namespace ERecord.Controllers
 
                 if (!employee.IsActive)
                 {
-                    ViewBag.UnapprovedMessage = "Your account is yet to be approved, please contact admin";
+                    ViewBag.UnapprovedMessage = "Your account is yet to be approved, please <a style=\"color: #FFE4BD; text-decoration: underline\" href=\"mailto:slamdam27@gmail.com\">contact admin</a>";
                     return View();
 
                 }
@@ -99,7 +99,7 @@ namespace ERecord.Controllers
                             return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                         case SignInStatus.Failure:
                         default:
-                            ModelState.AddModelError("", "Invalid Email or Password!.");
+                            ModelState.AddModelError("", "Invalid Password! Please enter a valid Password.");
                             return View(model);
                     }
                 }
