@@ -226,23 +226,29 @@
                 </dd>
 
                 <dt>
+                    @Html.DisplayNameFor(model => model.Position)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Position)
+                </dd>
+
+                <dt>
                     @Html.DisplayNameFor(model => model.LastPromoted)
                 </dt>
-
                 <dd>
-                    @Html.DisplayFor(model => model.LastPromoted)
+                    @Html.DisplayFor(model => model.LastPromoted, null, "{0: dd MMM yyyy}")
                 </dd>
 
                 <dt>
                     @Html.DisplayNameFor(model => model.YearlySalary)
                 </dt>
-
                 <dd>
                     @Html.DisplayFor(model => model.YearlySalary)
                 </dd>
-            
+
             }
         </dl>
+
     </div>
 </div>
 <div>
