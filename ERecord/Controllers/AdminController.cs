@@ -37,7 +37,7 @@ namespace ERecord.Controllers
 
             if (users.Count() == 0)
             {
-                ViewBag.SearchMessage = "No Employee Found based on your search term";
+                ViewBag.SearchMessage = "No Employee Found!";
             }//*********** End of serachString
 
             switch (sortOrder)

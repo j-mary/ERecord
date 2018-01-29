@@ -214,8 +214,6 @@ namespace ERecord.Controllers
         [Authorize(Roles = RoleName.Admin)]
         public ActionResult Create()
         {
-            // This will clear whatever form items have been populated
-            ModelState.Clear();
             return View();
         }
 
@@ -228,7 +226,7 @@ namespace ERecord.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser
+                var userAdmin = new ApplicationUser
                 {
                     UserName = model.Email,
                     Email = model.Email,
@@ -253,7 +251,7 @@ namespace ERecord.Controllers
                     YearlySalary = model.YearlySalary,
                     Position = model.Position
                 };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = await UserManager.CreateAsync(userAdmin, model.Password);
                 if (result.Succeeded)
                     return RedirectToAction("Index", "Admin");
             }

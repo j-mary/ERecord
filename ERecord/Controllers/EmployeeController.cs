@@ -32,7 +32,7 @@ namespace ERecord.Controllers
 
             if (users.Count() == 0) 
             {
-                ViewBag.SearchMessage = "No Employee Found based on your search term";
+                ViewBag.SearchMessage = "No Record Found";
             }//*********** End of serachString
 
             switch (sortOrder)
@@ -77,7 +77,7 @@ namespace ERecord.Controllers
             {
                 return HttpNotFound();
             }
-            return View(applicationUser);
+           return View(applicationUser);
         }
 
         // GET: Employee/Edit/5
@@ -92,6 +92,11 @@ namespace ERecord.Controllers
             {
                 return HttpNotFound();
             }
+            var userId = User.Identity.GetUserId();
+            if (userId != id)
+            {
+                return new HttpUnauthorizedResult();
+            }
             return View(applicationUser);
         }
 
@@ -100,7 +105,7 @@ namespace ERecord.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,IsActive,Address,City,State,Nationality,Gender,Dob,MaritalStatus,NumberOfChildren,EmploymentDay,SchoolAttended,MaximumQulaification,ServiceYear,LastPromoted,YearlySalary,DateCreated,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,IsActive,Address,City,State,Nationality,Gender,Dob,MaritalStatus,NumberOfChildren,EmploymentDay,SchoolAttended,MaximumQulaification,ServiceYear,LastPromoted,YearlySalary,DateCreated,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Position")] ApplicationUser applicationUser)
         {
             if (ModelState.IsValid)
             {
@@ -115,16 +120,19 @@ namespace ERecord.Controllers
         {
             //Get the ApplicationUser object in one line of code
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            
+            // Qyery the db for all employees other than admin and guest
+            var subUsers = db.Users.Where(u => u.Email != "admin@erecord.com" && u.Email != "guest@erecord.com");
             //Check the Position of current logged in employee
             var positionCheck = user.Position;
-            var subordinateCount = db.Users.Where(u => u.Position < positionCheck).Count();
-            if (subordinateCount.Equals(0))
+            var subordinates = subUsers.Where( u => u.Position != user.Position && u.Position < positionCheck);
+            if (subordinates.Count().Equals(0))
             {
                 ViewBag.Message = "You don't have Subordinates at this time";
-                return View(db.Users.Where(u => u.Position < positionCheck).ToList());
+                return View(subordinates.ToList());
             }
 
-            return View(db.Users.Where(u => u.Position < positionCheck).ToList());
+            return View(subordinates.ToList());
         }
 
         protected override void Dispose(bool disposing)

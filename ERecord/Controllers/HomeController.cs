@@ -14,9 +14,9 @@ namespace ERecord.Controllers
         {
             // GET The Total Employees, Unapproved and Approved
             ApplicationDbContext context = new ApplicationDbContext();
-            int UnApprovedEmployeesCount = context.Users.Where(e => e.IsActive == false).Count();
+            int UnApprovedEmployeesCount = context.Users.Where(e => e.Email != "admin@erecord.com" && e.Email != "guest@erecord.com" && e.IsActive == false).Count();
             // GET All Approved Employees minus one Seeded Admin and one test Users
-            int ApprovedEmployeesCount = context.Users.Where(e => e.IsActive == true).Count() - 2;
+            int ApprovedEmployeesCount = context.Users.Where(e => e.Email != "admin@erecord.com" && e.Email != "guest@erecord.com" && e.IsActive == true).Count();
             //Return Total Number of Employees
             int AllEmployeesCount = (UnApprovedEmployeesCount + ApprovedEmployeesCount);
             ViewBag.UnApprovedEmployeesCount = UnApprovedEmployeesCount;
