@@ -68,14 +68,14 @@
                 @Html.DisplayFor(modelItem => item.State)
             </td>
             <td>
-                | @Html.ActionLink("Details", "Details", null, new { id = item.Id }, new { @class = "btn btn-info btn-sm" }) |
+                 @Html.ActionLink("Details", "Details", null, new { id = item.Id }, new { @class = "btn btn-info btn-sm" }) 
 
                 @{
                     var user = User.Identity.GetUserId();
                 }
                 @if (item.Id == user)
                 {
-                    @Html.ActionLink("Edit", "Edit", null, new {Id = item.Id}, new {@class = "btn btn-warning btn-sm active"}) 
+                    @Html.ActionLink("Edit", "Edit", null, new {Id = item.Id}, new {@class = "btn btn-warning btn-sm active"})
                 }
             </td>
         </tr>
