@@ -188,7 +188,7 @@ namespace ERecord.Controllers
                     MaritalStatus = model.MaritalStatus,
                     NumberOfChildren = model.NumberOfChildren,
                     DateCreated = DateTime.Now,
-                    IsActive = model.IsActive
+                    IsActive = false
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -203,8 +203,6 @@ namespace ERecord.Controllers
         {
             return View();
         }
-
-
 
 
 
@@ -269,12 +267,6 @@ namespace ERecord.Controllers
 
 
 
-
-
-
-
-
-        //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)

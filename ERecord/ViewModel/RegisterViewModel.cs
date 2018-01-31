@@ -80,7 +80,5 @@ namespace ERecord.ViewModel
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime DateCreated { get; set; }
-
-        public bool IsActive { get; set; } = false;
     }
 }

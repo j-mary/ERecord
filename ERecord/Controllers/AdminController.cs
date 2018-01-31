@@ -3,8 +3,11 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using ERecord.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 
 namespace ERecord.Controllers
@@ -110,23 +113,55 @@ namespace ERecord.Controllers
         // POST: Employee/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,IsActive,Address,City,State,Nationality,Gender,Dob,MaritalStatus,NumberOfChildren,EmploymentDay,SchoolAttended,MaximumQulaification,ServiceYear,LastPromoted,YearlySalary,DateCreated,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Position")] ApplicationUser applicationUser)
+        public ActionResult EditPost(string id)
         {
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                if (applicationUser.Position == 0)
-                {
-                    ViewBag.Message = "Please asign a position to this employee.";
-                    return View(applicationUser);
-                }
-                db.Entry(applicationUser).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View(applicationUser);
+            var employee = db.Users.Find(id);
+            if (TryUpdateModel(employee, "",
+                new string[] { "FirstName", "LastName", "IsActive", "Address", "City", "State", "Nationality", "Gender", "Dob", "MaritalStatus", "NumberOfChildren", "EmploymentDay", "SchoolAttended", "MaximumQulaification", "ServiceYear", "LastPromoted", "YearlySalary", "DateCreated", "Email", "PhoneNumber", "UserName", "Position" }))
+            {
+                try
+                {
+                    if (employee.Position == 0)
+                    {
+                        ViewBag.Message = "Please asign a position to this employee.";
+                        return View(employee);
+                    }
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                catch (DataException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+            return View(employee);
         }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,IsActive,Address,City,State,Nationality,Gender,Dob,MaritalStatus,NumberOfChildren,EmploymentDay,SchoolAttended,MaximumQulaification,ServiceYear,LastPromoted,YearlySalary,DateCreated,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Position")] ApplicationUser applicationUser)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (applicationUser.Position == 0)
+        //        {
+        //            ViewBag.Message = "Please asign a position to this employee.";
+        //            return View(applicationUser);
+        //        }
+        //        db.Entry(applicationUser).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(applicationUser);
+        //}
    
         // GET: Admin/Delete/5
         public ActionResult Delete(string id)
