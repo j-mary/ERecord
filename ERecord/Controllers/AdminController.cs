@@ -30,6 +30,8 @@ namespace ERecord.Controllers
             ViewBag.SalarySortParm = sortOrder == "YearlySalary" ? "salary_desc" : "YearlySalary";
             ViewBag.Gender = sortOrder == "Gender" ? "gender_desc" : "Gender";
             ViewBag.Position = sortOrder == "Position" ? "position_desc" : "Position";
+            ViewBag.Email = sortOrder == "Email" ? "email_desc" : "Email";
+            ViewBag.Access = sortOrder == "Access" ? "access_desc" : "Access";
             var users = db.Users.Where(u => u.Email != "admin@erecord.com" && u.Email != "guest@erecord.com");
 
             //Takes care of serachString **********
@@ -71,6 +73,18 @@ namespace ERecord.Controllers
                     break;
                 case "position_desc":
                     users = users.OrderByDescending(s => s.Position);
+                    break;
+                case "Email":
+                    users = users.OrderBy(s => s.Email);
+                    break;
+                case "email_desc":
+                    users = users.OrderByDescending(s => s.Email);
+                    break;
+                case "Access":
+                    users = users.OrderBy(s => s.IsActive);
+                    break;
+                case "access_desc":
+                    users = users.OrderByDescending(s => s.IsActive);
                     break;
                 default:
                     users = users.OrderBy(s => s.FirstName);

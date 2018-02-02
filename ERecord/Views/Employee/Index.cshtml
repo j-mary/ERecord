@@ -22,7 +22,7 @@
             @Html.ActionLink("Full Name", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.Email })
         </th>
         <th>
             Phone
@@ -75,7 +75,7 @@
                 }
                 @if (item.Id == user)
                 {
-                    @Html.ActionLink("Edit", "Edit", null, new {Id = item.Id}, new {@class = "btn btn-warning btn-sm active"})
+                    @Html.ActionLink("Edit", "Edit", null, new {Id = item.Id}, new {@class = "btn btn-success btn-sm"})
                 }
             </td>
         </tr>

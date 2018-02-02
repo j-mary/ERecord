@@ -22,6 +22,8 @@ namespace ERecord.Controllers
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewBag.States = sortOrder == "States" ? "states_desc" : "States";
             ViewBag.Gender = sortOrder == "Gender" ? "gender_desc" : "Gender";
+            ViewBag.Email = sortOrder == "Email" ? "email_desc" : "Email";
+
             var users = db.Users.Where(u => u.Email != "admin@erecord.com" && u.Email != "guest@erecord.com");
 
             //Takes care of serachString **********
@@ -57,6 +59,12 @@ namespace ERecord.Controllers
                     break;
                 case "gender_desc":
                     users = users.OrderByDescending(s => s.Gender);
+                    break;
+                case "Email":
+                    users = users.OrderBy(s => s.Email);
+                    break;
+                case "email_desc":
+                    users = users.OrderByDescending(s => s.Email);
                     break;
                 default:
                     users = users.OrderBy(s => s.FirstName);
