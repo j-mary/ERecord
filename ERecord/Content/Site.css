@@ -222,4 +222,9 @@ label.control-label {
 	.sidenav {padding-top: 15px;}
 	.sidenav a {font-size: 18px;}
 }
-style="color: aliceblue; background: firebrick"
+
+.badge {
+	color: #44f6d0;
+	background-color: #561010;
+	font-size: 18px;
+}

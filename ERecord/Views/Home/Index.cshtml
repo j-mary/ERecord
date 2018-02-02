@@ -31,12 +31,12 @@
 		{
 			if (User.IsInRole(RoleName.Admin))
 			{
-				<span><i style="color: #F00">Hello Admin! </i> &nbsp; &nbsp; &nbsp; <a href="@Url.Action("Index", "Admin")" class="btn btn-info btn-sm"> Manage Employees</a></span>
+				<span><i style="color: #F00">Hello! Admin </i> &nbsp; &nbsp; &nbsp; <a href="@Url.Action("Index", "Admin")" class="btn btn-info btn-sm"> Manage Employees</a></span>
 			}
 			else
 			{
 				var userId = User.Identity.GetUserId();
-				<span><ii style="color: #F00">Welcome @user.FullName! </ii> &nbsp; &nbsp; &nbsp; <a href="@Url.Action("Index", "Employee", new {id = userId})" class="btn btn-info btn-sm"> View Profiles</a></span>
+				<span><i style="color: #F00">Welcome! @user.FullName </i> &nbsp; &nbsp; &nbsp; <a href="@Url.Action("Index", "Employee", new {id = userId})" class="btn btn-info btn-sm"> View Profiles</a></span>
 			}
 		}
 
@@ -61,9 +61,9 @@
 	<div class="in-content">
 		@if (User.IsInRole(RoleName.Admin))
 		{
-			<p>Registered Employees: <span style="color: #19ec19;">@ViewBag.AllEmployeesCount</span></p>
-			<p>Employees with Access: <span style="color: #19ec19;">@ViewBag.ApprovedEmployeesCount</span></p>
-			<p>Employees without Access: <span style="color: #19ec19;">@ViewBag.UnApprovedEmployeesCount</span></p>
+			<p>Registered Employees: <span class="badge">@ViewBag.AllEmployeesCount</span></p>
+			<p>Employees with Access: <span class="badge">@ViewBag.ApprovedEmployeesCount</span></p>
+			<p>Employees without Access: <span class="badge">@ViewBag.UnApprovedEmployeesCount</span></p>
 		}
 		else
 		{
