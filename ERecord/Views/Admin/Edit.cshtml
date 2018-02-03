@@ -13,6 +13,7 @@
 <div class="edit-page">
     <div class="edit-form">
         <h4 class="edit-h4">Edit <span class="display-name">@Model.FullName</span> Profile</h4>
+        <hr/>
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
@@ -152,8 +153,9 @@
                         <span style="color: red">@ViewBag.Message</span>
                     </div>
                 </div>
+                <hr/>
                 <div class="col-md-6">
-                    <input type="submit" value="Save Changes" class="btn btn-primary" />
+                    <input type="submit" value="Save Changes" class="btn btn-success" />
                 </div>
             </div>
         }
